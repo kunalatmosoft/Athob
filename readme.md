@@ -1,5 +1,4 @@
-The book "Eloquent JavaScript" by Marijn Haverbeke is a comprehensive guide to learning JavaScript, covering a wide range of topics from basic programming principles to advanced concepts and project implementations. Below are detailed notes on each chapter, along with relevant code examples for the discussed topics.
-
+The book "Eloquent JavaScript" by Marijn Haverbeke is a comprehensive guide to learning JavaScript, covering a wide range of topics from basic programming principles to advanced concepts and project implementations. Below are detailed notes on each chapter,
 ### Introduction
 - **On Programming**: Discusses the importance of programming in the modern world.
 - **Why Language Matters**: Explains how the choice of programming language impacts the development process.
@@ -656,4 +655,223 @@ The book "Eloquent JavaScript" by Marijn Haverbeke is a comprehensive guide to l
 - **Standard Objects**: Overview of standard JavaScript objects.
 - **ES6 and Beyond**: New features in modern JavaScript versions.
 
+
+
+### Chapter 1: Values, Types, and Operators
+- **Booleans**: Logical operations.
+  ```javascript
+  console.log(true && false);  // false
+  console.log(true || false);  // true
+  console.log(!true);          // false
+  ```
+
+### Chapter 2: Program Structure
+- **Control Flow**: If, else, while, do while, for.
+  ```javascript
+  if (true) {
+    console.log("This is true");
+  } else {
+    console.log("This is false");
+  }
+
+  let count = 0;
+  while (count < 5) {
+    console.log(count);
+    count++;
+  }
+
+  do {
+    console.log(count);
+    count--;
+  } while (count > 0);
+
+  for (let i = 0; i < 5; i++) {
+    console.log(i);
+  }
+  ```
+
+- **Functions**: Defining and calling functions.
+  ```javascript
+  function sayHello(name) {
+    console.log("Hello, " + name);
+  }
+
+  sayHello("World");
+  ```
+
+### Chapter 4: Data Structures: Objects and Arrays
+- **Arrays**: Basic array operations.
+  ```javascript
+  let list = [1, 2, 3, 4, 5];
+  console.log(list[0]); // 1
+  list.push(6);
+  console.log(list); // [1, 2, 3, 4, 5, 6]
+  ```
+
+- **Objects**: Creating and manipulating objects.
+  ```javascript
+  let person = {
+    name: "Alice",
+    age: 30
+  };
+  console.log(person.name); // Alice
+  person.age = 31;
+  console.log(person.age); // 31
+  ```
+
+### Chapter 5: Higher-Order Functions
+- **Higher-Order Functions**: Functions that operate on functions.
+  ```javascript
+  function repeat(n, action) {
+    for (let i = 0; i < n; i++) {
+      action(i);
+    }
+  }
+
+  repeat(3, console.log); // 0 1 2
+  ```
+
+- **Filter**: Filtering arrays.
+  ```javascript
+  let numbers = [1, 2, 3, 4, 5];
+  let evens = numbers.filter(n => n % 2 === 0);
+  console.log(evens); // [2, 4]
+  ```
+
+- **Map**: Mapping over arrays.
+  ```javascript
+  let doubled = numbers.map(n => n * 2);
+  console.log(doubled); // [2, 4, 6, 8, 10]
+  ```
+
+- **Reduce**: Reducing arrays to a single value.
+  ```javascript
+  let sum = numbers.reduce((a, b) => a + b, 0);
+  console.log(sum); // 15
+  ```
+
+### Chapter 6: The Secret Life of Objects
+- **Methods**: Adding methods to objects.
+  ```javascript
+  let rabbit = {};
+  rabbit.speak = function(line) {
+    console.log(`The rabbit says '${line}'`);
+  };
+  rabbit.speak("Hello!"); // The rabbit says 'Hello!'
+  ```
+
+- **Prototypes**: Using prototypes for inheritance.
+  ```javascript
+  let protoRabbit = {
+    speak(line) {
+      console.log(`The rabbit says '${line}'`);
+    }
+  };
+  let killerRabbit = Object.create(protoRabbit);
+  killerRabbit.speak("I am a killer!"); // The rabbit says 'I am a killer!'
+  ```
+
+### Chapter 9: Regular Expressions
+- **Replacing with Regular Expressions**: Replacing text using regex.
+  ```javascript
+  let text = "Borobudur";
+  let replaced = text.replace(/[ou]/g, "a");
+  console.log(replaced); // Barabadar
+  ```
+
+### Chapter 13: JavaScript and the Browser
+- **Styling**: Changing element styles.
+  ```javascript
+  let paragraph = document.querySelector("p");
+  paragraph.style.color = "blue";
+  ```
+
+### Chapter 14: The Document Object Model
+- **Creating Elements**: Creating new DOM elements.
+  ```javascript
+  let newDiv = document.createElement("div");
+  newDiv.textContent = "Hello, DOM!";
+  document.body.appendChild(newDiv);
+  ```
+
+### Chapter 15: Handling Events
+- **Event Listeners**: Attaching multiple event listeners.
+  ```javascript
+  let button = document.querySelector("button");
+  button.addEventListener("click", () => {
+    console.log("Button was clicked!");
+  });
+  button.addEventListener("mouseover", () => {
+    console.log("Mouse over the button!");
+  });
+  ```
+
+### Chapter 16: Project: A Platform Game
+- **Actor Classes**: Defining classes for game actors.
+  ```javascript
+  class Player {
+    constructor(pos, speed) {
+      this.pos = pos;
+      this.speed = speed;
+    }
+  }
+
+  class Coin {
+    constructor(pos) {
+      this.pos = pos;
+    }
+  }
+  ```
+
+### Chapter 19: Project: A Pixel Art Editor
+- **Basic Drawing**: Implementing basic drawing functionality.
+  ```javascript
+  function drawPixel(x, y, color) {
+    let canvas = document.querySelector("canvas");
+    let ctx = canvas.getContext("2d");
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, 1, 1);
+  }
+
+  canvas.addEventListener("click", event => {
+    let x = event.offsetX;
+    let y = event.offsetY;
+    drawPixel(x, y, "black");
+  });
+  ```
+
+### Appendix A: Programming Tools
+- **Git Commands**: Basic Git commands.
+  ```sh
+  # Initialize a new Git repository
+  git init
+
+  # Add files to staging area
+  git add .
+
+  # Commit changes
+  git commit -m "Initial commit"
+
+  # Check status
+  git status
+  ```
+
+### Appendix B: Language Details
+- **Template Literals**: Using template literals.
+  ```javascript
+  let name = "Alice";
+  let greeting = `Hello, ${name}!`;
+  console.log(greeting); // Hello, Alice!
+  ```
+
+- **Destructuring**: Destructuring arrays and objects.
+  ```javascript
+  let [x, y] = [1, 2];
+  console.log(x, y); // 1 2
+
+  let { name, age } = { name: "Alice", age: 30 };
+  console.log(name, age); // Alice 30
+  ```
+
+This completes the detailed notes with code examples for all topics in "Eloquent JavaScript." For more comprehensive explanations and additional examples, refer to the book itself.
 These notes provide a broad overview of the topics covered in "Eloquent JavaScript." For detailed explanations and additional code examples, refer to the book itself.
